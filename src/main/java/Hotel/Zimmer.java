@@ -1,5 +1,7 @@
 package Hotel;
 
+import java.util.ArrayList;
+
 public class Zimmer {
 //3 Attribute
     private String name;
@@ -13,8 +15,6 @@ public class Zimmer {
         this.personenanzahl = personenanzahl;
         this.preisProNacht = preisProNacht;
     }
-}
-    //die Methode, die den preis berechnet (aus Nächte und Frühstück)
 
     public double berechnePreis(int naechte, boolean fruehstueck) {
         double gesamt = preisProNacht * naechte;
@@ -35,4 +35,7 @@ public class Zimmer {
 
     }
 
+
 }
+
+

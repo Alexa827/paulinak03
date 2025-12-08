@@ -1,6 +1,7 @@
 package Hotel;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class HotelBuchung extends JFrame{
 
@@ -19,6 +20,8 @@ public class HotelBuchung extends JFrame{
     private JTextField preisErgebnistextField1;
     private JTextField nametextField1;
 
+    private liste<Zimmer> zimmerListe = new ArrayList<>();
+
     //Konstruktor:
     public HotelBuchung (){
         setTitle("Hotelbuchung");
@@ -26,6 +29,10 @@ public class HotelBuchung extends JFrame{
         setSize(800,700);
         setContentPane(mainJPanel);
         setVisible(true);
+
+       void initObjekte; (){
+        zimmerListe.add("Hotel");
+
     }
 
 
@@ -34,3 +41,25 @@ public class HotelBuchung extends JFrame{
     }
 
 }
+
+//die Methode, die den preis berechnet (aus Nächte und Frühstück)
+/*public double berechnePreis(int naechte, boolean fruehstueck) {
+            double gesamt = preisProNacht * naechte;
+
+            if (fruehstueck) {
+                gesamt += 10 * naechte;
+            }
+            return gesamt;
+        }
+        public String getZimmerArt() {
+            return zimmerArt;
+        }
+        public int getPersonenanzahl(){
+            return personenanzahl;
+        }
+        public double getPreisProNacht(){
+            return preisProNacht;
+
+        }
+
+         */
