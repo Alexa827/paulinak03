@@ -17,6 +17,7 @@ public class HotelBuchung extends JFrame{
     private JLabel anzahlPersonenJLabel;
     private JLabel zimmerAuswahlJLabel;
     private JTextField preisErgebnistextField1;
+    private JTextField nametextField1;
 
     //Konstruktor:
     public HotelBuchung (){
