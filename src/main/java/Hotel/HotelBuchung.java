@@ -20,7 +20,7 @@ public class HotelBuchung extends JFrame{
     private JTextField preisErgebnistextField1;
     private JTextField nametextField1;
 
-    private liste<Zimmer> zimmerListe = new ArrayList<>();
+   private ArrayList<Zimmer> zimmerListe = new ArrayList<>();
 
     //Konstruktor:
     public HotelBuchung (){
@@ -30,8 +30,15 @@ public class HotelBuchung extends JFrame{
         setContentPane(mainJPanel);
         setVisible(true);
 
-       void initObjekte; (){
-        zimmerListe.add("Hotel");
+    public void initObjekte (){
+        zimmerListe.add(new Zimmer("Thomas Müller","Einzelzimmer", 1, 50.00 ));
+        zimmerListe.add(new Zimmer("Thomas Gottschalk","Doppelzimmer", 2, 100.00 ));
+        zimmerListe.add(new Zimmer("Heidi Klum","Familienzimmer", 10, 1000.00 ));
+        zimmerListe.add(new Zimmer("Felix Lobrecht","Doppelzimmer", 2, 150.00 ));
+        }
+
+
+
 
     }
 
