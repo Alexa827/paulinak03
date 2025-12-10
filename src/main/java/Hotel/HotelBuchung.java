@@ -1,9 +1,11 @@
 package Hotel;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class HotelBuchung extends JFrame{
+public class HotelBuchung extends JFrame {
 
     private JPanel mainJPanel;
     private JTextField anzahlPersonentextField2;
@@ -17,20 +19,22 @@ public class HotelBuchung extends JFrame{
     private JLabel fruestueckJLabel;
     private JLabel anzahlPersonenJLabel;
     private JLabel zimmerAuswahlJLabel;
-    private JTextField preisErgebnistextField1;
     private JTextField nametextField1;
+    private JButton minusAnzahlPersonenbutton1;
+    private JButton plusAnzahlPersonenbutton2;
+    private JLabel preisBerechnetJLabel;
 
-   private ArrayList<Zimmer> zimmerListe = new ArrayList<>();
+    private ArrayList<Zimmer> zimmerListe = new ArrayList<>();
 
     //Konstruktor:
-    public HotelBuchung (){
+    public HotelBuchung() {
         setTitle("Hotelbuchung");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800,700);
+        setSize(800, 700);
         setContentPane(mainJPanel);
         setVisible(true);
 
-        //füllt Liste, bevor Benutzer diese in GUI sieht ??
+        //füllt Liste, bevor Benutzer diese in GUI sieht, ohne sieht der Benutzer nichts
         initObjekte();
 
         //ComboBox befüllen mit einfachen Strings:
@@ -41,27 +45,41 @@ public class HotelBuchung extends JFrame{
         //Eingabe aus Eingabefelder holen:
         String name = nametextField1.getText();
         double anzahlPersonen = Double.parseDouble(anzahlPersonentextField2.getText());
+    }
 
 
+
+       /*anzahlPersonenNeuJLabel.setText("1");
+        minusAnzahlPersonenbutton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Zahl von String zu int
+                int counter = Integer.parseInt(anzahlPersonenNeuJLabel.getText());
+                //Zahl, soll eins nach oben zählen
+                counter ++;
+                //Zahl wieder von int zu String
+                anzahlPersonenNeuJLabel.setText(String.valueOf(counter));
+                }
+            }
+        });*/
+
+
+        //Einfügen von min. drei Objekten zur Array Liste:
+        public void initObjekte () {
+            zimmerListe.add(new Zimmer("Thomas Müller", "Einzelzimmer", 1, 50.00));
+            zimmerListe.add(new Zimmer("Thomas Gottschalk", "Doppelzimmer", 2, 100.00));
+            zimmerListe.add(new Zimmer("Heidi Klum", "Familienzimmer", 10, 1000.00));
+            zimmerListe.add(new Zimmer("Felix Lobrecht", "Doppelzimmer", 2, 150.00));
+
+            //Einfügen der bisherigen Liste in das Ausgabefelt
+            listetextArea1.setText(zimmerListe.toString());
         }
 
 
-    //Einfügen von min. drei Objekten zur Array Liste:
-    public void initObjekte (){
-        zimmerListe.add(new Zimmer("Thomas Müller","Einzelzimmer", 1, 50.00 ));
-        zimmerListe.add(new Zimmer("Thomas Gottschalk","Doppelzimmer", 2, 100.00 ));
-        zimmerListe.add(new Zimmer("Heidi Klum","Familienzimmer", 10, 1000.00 ));
-        zimmerListe.add(new Zimmer("Felix Lobrecht","Doppelzimmer", 2, 150.00 ));
-
-        //Einfügen der bisherigen Liste in das Ausgabefelt
-        listetextArea1.setText(zimmerListe.toString());
+        public static void main (String[]args){
+            new HotelBuchung();
+        }
     }
 
-
-    public static void main (String[] args){
-        new HotelBuchung();
-    }
-
-}
 
 
