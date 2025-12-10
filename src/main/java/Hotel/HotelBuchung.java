@@ -53,7 +53,7 @@ public class HotelBuchung extends JFrame{
         zimmerListe.add(new Zimmer("Heidi Klum","Familienzimmer", 10, 1000.00 ));
         zimmerListe.add(new Zimmer("Felix Lobrecht","Doppelzimmer", 2, 150.00 ));
 
-        //Einfügen der bisherigen Liste in das Ausgabefelt
+        //Einfügen der bisherigen Liste in das Ausgabefeld
         listetextArea1.setText(zimmerListe.toString());
     }
 
