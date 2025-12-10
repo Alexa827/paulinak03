@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class HotelBuchung extends JFrame {
 
     private JPanel mainJPanel;
-    private JTextField anzahlPersonentextField2;
+    private JTextField anzahlNaechtetextField2;
     private JRadioButton fruestueckjaRadioButton;
     private JRadioButton fruestueckNeinRadioButton;
     private JTextArea listetextArea1;
@@ -17,7 +17,7 @@ public class HotelBuchung extends JFrame {
     private JLabel preisJLabel;
     private JLabel filterJLabel;
     private JLabel fruestueckJLabel;
-    private JLabel anzahlPersonenJLabel;
+    private JLabel anzahlNaechteJLabel;
     private JLabel zimmerAuswahlJLabel;
     private JTextField nametextField1;
     private JButton minusAnzahlPersonenbutton1;
@@ -44,7 +44,7 @@ public class HotelBuchung extends JFrame {
 
         //Eingabe aus Eingabefelder holen:
         String name = nametextField1.getText();
-        double anzahlPersonen = Double.parseDouble(anzahlPersonentextField2.getText());
+        double anzahlPersonen = Double.parseDouble(anzahlNaechtetextField2.getText());
 
 
 
@@ -52,13 +52,13 @@ public class HotelBuchung extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Zahl von String zu int
-                int counter = Integer.parseInt(anzahlPersonentextField2.getText());
+                int counter = Integer.parseInt(anzahlNaechtetextField2.getText());
                 if (counter > 1){
                     //Zahl, soll eins nach unten zählen
                     counter --;
                 }
                 //Zahl wieder von int zu String
-                anzahlPersonentextField2.setText(String.valueOf(counter));
+                anzahlNaechtetextField2.setText(String.valueOf(counter));
             }
         });
 
@@ -66,21 +66,22 @@ public class HotelBuchung extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Zahl von String zu int
-                int counter = Integer.parseInt(anzahlPersonentextField2.getText());
+                int counter = Integer.parseInt(anzahlNaechtetextField2.getText());
                 //Zahl, soll eins nach oben zählen
                 counter ++;
                 //Zahl wieder von int zu String
-                anzahlPersonentextField2.setText(String.valueOf(counter));
+                anzahlNaechtetextField2.setText(String.valueOf(counter));
             }
         });
+
     }
 
         //Einfügen von min. drei Objekten zur Array Liste:
         public void initObjekte () {
-            zimmerListe.add(new Zimmer("Thomas Müller", "Einzelzimmer", 1, 50.00));
-            zimmerListe.add(new Zimmer("Thomas Gottschalk", "Doppelzimmer", 2, 100.00));
-            zimmerListe.add(new Zimmer("Heidi Klum", "Familienzimmer", 10, 1000.00));
-            zimmerListe.add(new Zimmer("Felix Lobrecht", "Doppelzimmer", 2, 150.00));
+            zimmerListe.add(new Zimmer("Thomas Müller", "Einzelzimmer", 1,true, 50.00));
+            zimmerListe.add(new Zimmer("Thomas Gottschalk", "Doppelzimmer", 2, true, 120.00));
+            zimmerListe.add(new Zimmer("Heidi Klum", "Familienzimmer", 10, false, 20.00));
+            zimmerListe.add(new Zimmer("Felix Lobrecht", "Doppelzimmer", 2, true, 150.00));
 
             //Einfügen der bisherigen Liste in das Ausgabefelt
             listetextArea1.setText(zimmerListe.toString());
@@ -91,6 +92,23 @@ public class HotelBuchung extends JFrame {
             new HotelBuchung();
         }
     }
+
+/*public double berechnePreis(int naechte, boolean fruehstueck) {
+    double gesamt = preisProNacht * naechte;
+
+    if (fruehstueck) {
+        gesamt += 10 * naechte;
+    }
+    return gesamt;
+}
+public String getZimmerArt() {
+    return zimmerArt;
+}
+public int getPersonenanzahl(){
+    return personenanzahl;
+}
+public double getPreisProNacht(){
+    return preisProNacht;*/
 
 
 

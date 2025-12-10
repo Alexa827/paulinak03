@@ -1,7 +1,8 @@
 package Hotel;
 
+import javax.swing.*;
 import java.util.ArrayList;
-public class Zimmer {
+public class Zimmer extends JFrame {
     //3 Attribute
     private String name;
     private String zimmerArt;
@@ -9,11 +10,14 @@ public class Zimmer {
     private boolean fruestueck;
     private double preisProNacht;
 
-    public Zimmer(String name, String zimmerArt, int personenanzahl, double preisProNacht) {
+
+    public Zimmer(String name, String zimmerArt, int personenanzahl, boolean fruestueck, double preisProNacht) {
         this.name = name;
         this.zimmerArt = zimmerArt;
         this.personenanzahl = personenanzahl;
+        this.fruestueck = fruestueck;
         this.preisProNacht = preisProNacht;
+
     }
 
     //Ausgabe verschönern von Array Liste: (hier, weil HotelBuchung weiß nicht wie Objekte aussehen sollen, nur Klasse selbst)
