@@ -20,12 +20,21 @@ public class Zimmer extends JFrame {
 
     }
 
-    public double berechnePreis(int naechteanzahl) {
+    public double berechnePreis() {
         double gesamt = preisProNacht * naechteanzahl;
-
-        // Frühstück entweder ja oder nein, wenn ja dann berechnet es 10 euro auf den preis pro nacht drauf
+// hier mit fruehstück direkt, somit wird der endgültige preis berechnet
         if (fruestueck) {
-            gesamt += 10 * naechteanzahl;
+            double fruestueckPreis = 0;
+
+            if ("Einzelzimmer".equals(zimmerArt)) {
+                fruestueckPreis = 12.0;
+            } else if ("Doppelzimmer".equals(zimmerArt)) {
+                fruestueckPreis = 24.0;
+            } else if ("Familienzimmer".equals(zimmerArt)) {
+                fruestueckPreis = 40.0;
+            }
+
+            gesamt += fruestueckPreis * naechteanzahl;
         }
 
         return gesamt;

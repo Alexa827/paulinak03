@@ -42,9 +42,10 @@ public class HotelBuchung extends JFrame {
         zimmerAuswahlcomboBox1.addItem("Doppelzimmer");
         zimmerAuswahlcomboBox1.addItem("Familienzimmer");
 
+
         //Eingabe aus Eingabefelder holen:
         String name = nametextField1.getText();
-        double anzahlPersonen = Double.parseDouble(naechteanzahltextField2.getText());
+        double naechteanzahl = Double.parseDouble(naechteanzahltextField2.getText());
 
 
 
@@ -74,6 +75,30 @@ public class HotelBuchung extends JFrame {
             }
         });
 
+        zimmerAuswahlcomboBox1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // hier die lokale Variable, die als wertespeicher dient
+                String zimmerArt = (String) zimmerAuswahlcomboBox1.getSelectedItem();
+                //wir nehmen die methode für zimmerArt
+                double preisProNacht = berechnePreisProNacht(zimmerArt);
+                //habe das Label neu hinzugefügt mit dem AusgabeText, wenn es durch die Methode berechnet wird
+                preisBerechnetJLabel.setText(preisProNacht + " € pro Nacht für das ausgewählte Zimmer");
+            }
+        });
+    }
+
+    //Methode mit der man Zimmerart auswählt und der Preis pro Nacht bestimmt wird
+    public double berechnePreisProNacht (String zimmerAuswahlcomboBox1){
+        if ("Enzelzimmer".equals(zimmerAuswahlcomboBox1)) {
+            return 50.00;
+        }   else if ("Doppelzimmer".equals(zimmerAuswahlcomboBox1)) {
+            return 120.00;
+        }   else if ("Familienzimmer".equals(zimmerAuswahlcomboBox1)) {
+            return 180.00;
+        } else {
+            return 50.00;
+        }
     }
 
         //Einfügen von min. drei Objekten zur Array Liste:
