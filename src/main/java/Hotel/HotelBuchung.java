@@ -45,24 +45,35 @@ public class HotelBuchung extends JFrame {
         //Eingabe aus Eingabefelder holen:
         String name = nametextField1.getText();
         double anzahlPersonen = Double.parseDouble(anzahlPersonentextField2.getText());
-    }
 
 
 
-       /*anzahlPersonenNeuJLabel.setText("1");
         minusAnzahlPersonenbutton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Zahl von String zu int
-                int counter = Integer.parseInt(anzahlPersonenNeuJLabel.getText());
+                int counter = Integer.parseInt(anzahlPersonentextField2.getText());
+                if (counter > 1){
+                    //Zahl, soll eins nach unten zählen
+                    counter --;
+                }
+                //Zahl wieder von int zu String
+                anzahlPersonentextField2.setText(String.valueOf(counter));
+            }
+        });
+
+        plusAnzahlPersonenbutton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Zahl von String zu int
+                int counter = Integer.parseInt(anzahlPersonentextField2.getText());
                 //Zahl, soll eins nach oben zählen
                 counter ++;
                 //Zahl wieder von int zu String
-                anzahlPersonenNeuJLabel.setText(String.valueOf(counter));
-                }
+                anzahlPersonentextField2.setText(String.valueOf(counter));
             }
-        });*/
-
+        });
+    }
 
         //Einfügen von min. drei Objekten zur Array Liste:
         public void initObjekte () {
