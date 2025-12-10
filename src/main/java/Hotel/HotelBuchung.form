@@ -5,7 +5,10 @@
     <constraints>
       <xy x="20" y="20" width="674" height="387"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-13675684"/>
+      <enabled value="false"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="49b65" class="javax.swing.JLabel" binding="zimmerAuswahlJLabel">
@@ -64,6 +67,8 @@
         </constraints>
         <properties>
           <editable value="false"/>
+          <foreground color="-8007963"/>
+          <lineWrap value="false"/>
         </properties>
       </component>
       <component id="7358e" class="javax.swing.JLabel" binding="filterJLabel">
