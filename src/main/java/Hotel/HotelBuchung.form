@@ -16,15 +16,15 @@
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Zimmer"/>
+          <text value="Zimmerart"/>
         </properties>
       </component>
-      <component id="1de60" class="javax.swing.JLabel" binding="anzahlNaechteJLabel">
+      <component id="1de60" class="javax.swing.JLabel" binding="naechteanzahlJLabel">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Anzahl Nächte"/>
+          <text value="Anzahl der Nächte"/>
         </properties>
       </component>
       <component id="131c6" class="javax.swing.JLabel" binding="fruestueckJLabel">
@@ -35,7 +35,7 @@
           <text value="Frühstück"/>
         </properties>
       </component>
-      <component id="c3f92" class="javax.swing.JTextField" binding="anzahlNaechtetextField2">
+      <component id="c3f92" class="javax.swing.JTextField" binding="naechteanzahltextField2">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>

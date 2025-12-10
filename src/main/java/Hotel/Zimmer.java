@@ -6,18 +6,29 @@ public class Zimmer extends JFrame {
     //3 Attribute
     private String name;
     private String zimmerArt;
-    private int personenanzahl;
+    private int naechteanzahl;
     private boolean fruestueck;
     private double preisProNacht;
 
 
-    public Zimmer(String name, String zimmerArt, int personenanzahl, boolean fruestueck, double preisProNacht) {
+    public Zimmer(String name, String zimmerArt, int naechteanzahl, boolean fruestueck, double preisProNacht) {
         this.name = name;
         this.zimmerArt = zimmerArt;
-        this.personenanzahl = personenanzahl;
+        this.naechteanzahl = naechteanzahl;
         this.fruestueck = fruestueck;
         this.preisProNacht = preisProNacht;
 
+    }
+
+    public double berechnePreis(int naechteanzahl) {
+        double gesamt = preisProNacht * naechteanzahl;
+
+        // Frühstück entweder ja oder nein, wenn ja dann berechnet es 10 euro auf den preis pro nacht drauf
+        if (fruestueck) {
+            gesamt += 10 * naechteanzahl;
+        }
+
+        return gesamt;
     }
 
     //Ausgabe verschönern von Array Liste: (hier, weil HotelBuchung weiß nicht wie Objekte aussehen sollen, nur Klasse selbst)
@@ -25,9 +36,9 @@ public class Zimmer extends JFrame {
     public String toString() {
         return "\nVor- und Nachname: " + name +
                 "\nZimmerart: " + zimmerArt +
-                "\nPersonenanzahl: " + personenanzahl +
-                "\nFrühtück: " + fruestueck +
-                "\nPreisProNacht: " + preisProNacht +
+                "\nNächteanzahl: " + naechteanzahl +
+                "\nFrühstück: " + fruestueck +
+                "\nPreis Pro Nacht: " + preisProNacht +
                 "\n-------------------";
 
     }

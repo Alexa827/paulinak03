@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class HotelBuchung extends JFrame {
 
     private JPanel mainJPanel;
-    private JTextField anzahlNaechtetextField2;
+    private JTextField naechteanzahltextField2;
     private JRadioButton fruestueckjaRadioButton;
     private JRadioButton fruestueckNeinRadioButton;
     private JTextArea listetextArea1;
@@ -17,7 +17,7 @@ public class HotelBuchung extends JFrame {
     private JLabel preisJLabel;
     private JLabel filterJLabel;
     private JLabel fruestueckJLabel;
-    private JLabel anzahlNaechteJLabel;
+    private JLabel naechteanzahlJLabel;
     private JLabel zimmerAuswahlJLabel;
     private JTextField nametextField1;
     private JButton minusAnzahlPersonenbutton1;
@@ -44,7 +44,7 @@ public class HotelBuchung extends JFrame {
 
         //Eingabe aus Eingabefelder holen:
         String name = nametextField1.getText();
-        double anzahlPersonen = Double.parseDouble(anzahlNaechtetextField2.getText());
+        double anzahlPersonen = Double.parseDouble(naechteanzahltextField2.getText());
 
 
 
@@ -52,13 +52,13 @@ public class HotelBuchung extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Zahl von String zu int
-                int counter = Integer.parseInt(anzahlNaechtetextField2.getText());
+                int counter = Integer.parseInt(naechteanzahltextField2.getText());
                 if (counter > 1){
                     //Zahl, soll eins nach unten zählen
                     counter --;
                 }
                 //Zahl wieder von int zu String
-                anzahlNaechtetextField2.setText(String.valueOf(counter));
+                naechteanzahltextField2.setText(String.valueOf(counter));
             }
         });
 
@@ -66,11 +66,11 @@ public class HotelBuchung extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Zahl von String zu int
-                int counter = Integer.parseInt(anzahlNaechtetextField2.getText());
+                int counter = Integer.parseInt(naechteanzahltextField2.getText());
                 //Zahl, soll eins nach oben zählen
                 counter ++;
                 //Zahl wieder von int zu String
-                anzahlNaechtetextField2.setText(String.valueOf(counter));
+                naechteanzahltextField2.setText(String.valueOf(counter));
             }
         });
 
