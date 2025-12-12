@@ -83,7 +83,7 @@ public class HotelBuchung extends JFrame {
                 //wir nehmen die methode für zimmerArt
                 double preisProNacht = berechnePreisProNacht(zimmerArt);
                 //habe das Label neu hinzugefügt mit dem AusgabeText, wenn es durch die Methode berechnet wird
-                preisBerechnetJLabel.setText(preisProNacht + " € pro Nacht für das ausgewählte Zimmer");
+                preisBerechnetJLabel.setText(preisProNacht + " € pro Nacht");
             }
         });
     }
@@ -108,8 +108,21 @@ public class HotelBuchung extends JFrame {
             zimmerListe.add(new Zimmer("Heidi Klum", "Familienzimmer", 10, false, 20.00));
             zimmerListe.add(new Zimmer("Felix Lobrecht", "Doppelzimmer", 2, true, 150.00));
 
+            updateTextArea(zimmerListe);
+        }
+
+        //Methode, damit sie aufgerufen werden kann, auch wenn man etwas hinzufügen möchte
+        private void updateTextArea(ArrayList<Zimmer> liste) {
+            String gesamtText = "";
+
             //Einfügen der bisherigen Liste in das Ausgabefelt
-            listetextArea1.setText(zimmerListe.toString());
+            for (Zimmer zimmer : liste) {
+                String einZimmerText = zimmer.toString();
+                gesamtText += einZimmerText;
+                gesamtText += "\n=================";
+            }
+
+            listetextArea1.setText(gesamtText);
         }
 
 

@@ -47,8 +47,7 @@ public class Zimmer extends JFrame {
                 "\nZimmerart: " + zimmerArt +
                 "\nNächteanzahl: " + naechteanzahl +
                 "\nFrühstück: " + fruestueck +
-                "\nPreis Pro Nacht: " + preisProNacht +
-                "\n-------------------";
+                "\nPreis Pro Nacht: " + preisProNacht;
 
     }
 }
