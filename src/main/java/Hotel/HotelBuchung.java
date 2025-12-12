@@ -101,6 +101,28 @@ public class HotelBuchung extends JFrame {
         }
     }
 
+    //hier methode um Frhstück dazuzurechnen , wenn "ja" gewählt wird
+    private void gesamtPreis() {
+        String zimmerArt = (String) zimmerAuswahlcomboBox1.getSelectedItem();
+        double preisProNacht = berechnePreisProNacht(zimmerArt);
+
+        //try catch jetzt anwenden, weil der Benutzer alles eingeben kann, deshalb müssen wir jetzt die fehler auffangen und direkt beheben: Try bedeutet hier, dass der Computer versucht die eingabe in Zahl zu ändern und catch fägt den fehler ab
+        int naechte;
+        try {
+            naechte = Integer.parseInt(naechteanzahltextField2.getText());
+        } catch (NumberFormatException ex) {
+            naechte = 1;
+            naechteanzahltextField2.setText("1");
+        }
+//hier wird nur ein vorschau preis berechnet weil endpreis wäre mit frühstück in einem fall
+        double vorschauPreisProNacht = preisProNacht * naechte;
+        preisBerechnetJLabel.setText(vorschauPreisProNacht + " € " + naechte + "Nächte");
+
+
+    }
+
+    // auch methode wenn man nächte auswähl, dass der preis immer erhöht wird
+
         //Einfügen von min. drei Objekten zur Array Liste:
         public void initObjekte () {
             zimmerListe.add(new Zimmer("Thomas Müller", "Einzelzimmer", 1,true, 50.00));
