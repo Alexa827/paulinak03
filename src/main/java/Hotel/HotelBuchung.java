@@ -44,13 +44,15 @@ public class HotelBuchung extends JFrame {
         zimmerAuswahlcomboBox1.addItem("Doppelzimmer");
         zimmerAuswahlcomboBox1.addItem("Familienzimmer");
 
+        //Früstück standartmäßig auf Ja stellen, falls nichts anderes ausgewählt wird
+        ButtonGroup fruestueck = new ButtonGroup();
+        fruestueck.add(fruestueckjaRadioButton);
+        fruestueck.add(fruestueckNeinRadioButton);
 
-        //Eingabe aus Eingabefelder holen:
-        String name = nametextField1.getText();
-        double naechteanzahl = Double.parseDouble(naechteanzahltextField2.getText());
+        fruestueckjaRadioButton.setSelected(true);
 
 
-
+        //Counter für die Anzahl an Personen
         minusAnzahlPersonenbutton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -77,6 +79,7 @@ public class HotelBuchung extends JFrame {
             }
         });
 
+        //Preis berechnen, wenn einer der Zimmer angewählt ist, muss inerhalb des Konstruktors stehen
         zimmerAuswahlcomboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -90,9 +93,18 @@ public class HotelBuchung extends JFrame {
         });
     }
 
+    //Früstückspreis
+    public double fruestueck(){
+        if (fruestueckjaRadioButton.isSelected()){
+            return 20.00;
+        } else{
+            return 0.00;
+        }
+    }
+
     //Methode mit der man Zimmerart auswählt und der Preis pro Nacht bestimmt wird
     public double berechnePreisProNacht (String zimmerAuswahlcomboBox1){
-        if ("Enzelzimmer".equals(zimmerAuswahlcomboBox1)) {
+        if ("Enzelzimmer".equals(zimmerAuswahlcomboBox1)){
             return 50.00;
         }   else if ("Doppelzimmer".equals(zimmerAuswahlcomboBox1)) {
             return 120.00;
@@ -101,9 +113,10 @@ public class HotelBuchung extends JFrame {
         } else {
             return 50.00;
         }
+
     }
 
-    //hier methode um Frhstück dazuzurechnen , wenn "ja" gewählt wird
+    //hier Methode um Frhstück dazuzurechnen , wenn "ja" gewählt wird
     private void gesamtPreis() {
         String zimmerArt = (String) zimmerAuswahlcomboBox1.getSelectedItem();
         double preisProNacht = berechnePreisProNacht(zimmerArt);
@@ -115,10 +128,13 @@ public class HotelBuchung extends JFrame {
         } catch (NumberFormatException ex) {
             naechte = 1;
             naechteanzahltextField2.setText("1");
+
+
         }
-//hier wird nur ein vorschau preis berechnet weil endpreis wäre mit frühstück in einem fall
-        double vorschauPreisProNacht = preisProNacht * naechte;
-        preisBerechnetJLabel.setText(vorschauPreisProNacht + " € " + naechte + "Nächte");
+
+        naechte = Integer.parseInt(naechteanzahltextField2.getText());
+        double vorschauPreisProNacht = preisProNacht * naechte + fruestueck();
+        preisBerechnetJLabel.setText(String.valueOf(vorschauPreisProNacht) + " € " + String.valueOf(naechte) + "Nächte");
 
 
     }

@@ -36,7 +36,6 @@ public class Zimmer extends JFrame {
 
             gesamt += fruestueckPreis * naechteanzahl;
         }
-
         return gesamt;
     }
 
