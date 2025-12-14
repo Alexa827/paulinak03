@@ -94,17 +94,17 @@ public class HotelBuchung extends JFrame {
                 //Hier wird ein Hinweis angezeigt, wenn die max. Nächteanzahl überschritten wird
                 //hier bedeutet this = das JFrame, 1.Text = Nachricht und 2.Text ist das Fenstertitel
                 if (counter < 30) {
-                    counter ++;
+                    counter++;
                 } else {
                     JOptionPane.showMessageDialog(HotelBuchung.this, "Es können maximal 30 Nächte gebucht werden!", "Hinweis", JOptionPane.INFORMATION_MESSAGE); //Das Information_Message ich der Ikon-Typ
                 }
+
                 //Zahl wieder von int zu String
                 naechteanzahltextField2.setText(String.valueOf(counter));
 
                 gesamtPreis(); //dadurch wird die Berechnung neu gemacht bei Änferungen
             }
         });
-
 
 
         //Preis berechnen, wenn einer der Zimmer angewählt ist, muss inerhalb des Konstruktors stehen
@@ -114,9 +114,51 @@ public class HotelBuchung extends JFrame {
                 gesamtPreis();
             }
         });
-    gesamtPreis();
-    setVisible(true);
+        gesamtPreis();
+        setVisible(true);
 
+        buchnungSpeichernButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //hier erstmal prüfen, ob überhaupt ein Name eingegeben wurde, sonst Fehlermeldung
+                String name = nametextField1.getText().trim();
+                if (name.isEmpty()) {
+                    JOptionPane.showMessageDialog(HotelBuchung.this, "Bitte einen Namen eingeben!", "Hinweis", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+                String zimmerArt = (String) zimmerAuswahlcomboBox1.getSelectedItem();
+                boolean fruestueck = fruestueckjaRadioButton.isSelected();
+
+                int naechte;
+                try {
+                    naechte = Integer.parseInt(naechteanzahltextField2.getText());
+                    if (naechte < 1)
+                        naechte = 1; //heißt: wenn man weniger als 1 eingibt, wird es automatisch auf 1 gesetzt
+                    if (naechte > 30)
+                        naechte = 30; // heißt: wenn man mehr als 30 eingibt, wird es automatisch zurück auf "max" 30 gesetzt
+                } catch (NumberFormatException exception) {
+                    naechte = 1;
+                    naechteanzahltextField2.setText("1");
+                }
+
+                //hier: Preis pro Nacht wird für Speicher Button bestimmt
+                double preisPronacht = berechnePreisProNacht(zimmerArt);
+
+                //Hier: für SpeicherButton wird ZimmerObjekt erstellt und gespeichert
+                Zimmer zimmer = new Zimmer(name, zimmerArt, naechte, fruestueck, preisPronacht);
+                zimmerListe.add(zimmer);
+
+                //hier: wird Textarea aktualisiert, sodass Daten hinzugefügt werrden
+                updateTextArea(zimmerListe);
+
+                //ein Fenster, der aufploppt, um zu zeigen, dass die Buchung bestätigt wurde und gespeichert
+
+                JOptionPane.showMessageDialog(HotelBuchung.this, "Buchung wurde erfolgreich gespeichert!", "Info", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        });
     }
 
     //Methode mit der man Zimmerart auswählt und der Preis pro Nacht bestimmt wird
