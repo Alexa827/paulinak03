@@ -36,6 +36,8 @@ public class HotelBuchung extends JFrame {
         setContentPane(mainJPanel);
         setVisible(true);
 
+        naechteanzahltextField2.setText("1");
+
         //füllt Liste, bevor Benutzer diese in GUI sieht, ohne sieht der Benutzer nichts
         initObjekte();
 
@@ -51,60 +53,69 @@ public class HotelBuchung extends JFrame {
 
         fruestueckjaRadioButton.setSelected(true);
 
+//Gesamtpreis wird geändert bzw. aktualisiert, wenn bei Frühstücj ja oder nein ausgewählt wird
+        fruestueckjaRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gesamtPreis();
+            }
+        });
 
-        //Counter für die Anzahl an Personen
+        fruestueckNeinRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gesamtPreis();
+            }
+        });
+
+
+        //Counter für die Anzahl an Nächte (Minus)
         minusAnzahlPersonenbutton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Zahl von String zu int
                 int counter = Integer.parseInt(naechteanzahltextField2.getText());
-                if (counter > 1){
+                if (counter > 1) {
                     //Zahl, soll eins nach unten zählen
-                    counter --;
+                    counter--;
                 }
                 //Zahl wieder von int zu String
                 naechteanzahltextField2.setText(String.valueOf(counter));
+                gesamtPreis();
             }
         });
-
+//Counter Plus
         plusAnzahlPersonenbutton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Zahl von String zu int
                 int counter = Integer.parseInt(naechteanzahltextField2.getText());
                 //Zahl, soll eins nach oben zählen
-                counter ++;
+                counter++;
                 //Zahl wieder von int zu String
                 naechteanzahltextField2.setText(String.valueOf(counter));
+
+                gesamtPreis(); //dadurch wird die Berechnung neu gemacht bei Änferungen
             }
         });
+
+
 
         //Preis berechnen, wenn einer der Zimmer angewählt ist, muss inerhalb des Konstruktors stehen
         zimmerAuswahlcomboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // hier die lokale Variable, die als wertespeicher dient
-                String zimmerArt = (String) zimmerAuswahlcomboBox1.getSelectedItem();
-                //wir nehmen die methode für zimmerArt
-                double preisProNacht = berechnePreisProNacht(zimmerArt);
-                //habe das Label neu hinzugefügt mit dem AusgabeText, wenn es durch die Methode berechnet wird
-                preisBerechnetJLabel.setText(preisProNacht + " € pro Nacht");
+                gesamtPreis();
             }
         });
-    }
+    gesamtPreis();
+    setVisible(true);
 
-    //Früstückspreis
-    public double fruestueck(){
-        if (fruestueckjaRadioButton.isSelected()){
-            return 20.00;
-        } else{
-            return 0.00;
-        }
     }
 
     //Methode mit der man Zimmerart auswählt und der Preis pro Nacht bestimmt wird
     public double berechnePreisProNacht (String zimmerAuswahlcomboBox1){
-        if ("Enzelzimmer".equals(zimmerAuswahlcomboBox1)){
+        if ("Einzelzimmer".equals(zimmerAuswahlcomboBox1)){
             return 50.00;
         }   else if ("Doppelzimmer".equals(zimmerAuswahlcomboBox1)) {
             return 120.00;
@@ -115,9 +126,23 @@ public class HotelBuchung extends JFrame {
         }
 
     }
+    /*private double fruehstueckProNacht(String zimmerArt) {
+        if (!fruestueckjaRadioButton.isSelected()) {
+            return 0.0;
+        }
+
+        if ("Einzelzimmer".equals(zimmerArt)) return 12.0;
+        if ("Doppelzimmer".equals(zimmerArt)) return 24.0;
+        if ("Familienzimmer".equals(zimmerArt)) return 40.0;
+
+        return 0.0;
+    }*/
+
+
 
     //hier Methode um Frhstück dazuzurechnen , wenn "ja" gewählt wird
     private void gesamtPreis() {
+
         String zimmerArt = (String) zimmerAuswahlcomboBox1.getSelectedItem();
         double preisProNacht = berechnePreisProNacht(zimmerArt);
 
@@ -128,18 +153,28 @@ public class HotelBuchung extends JFrame {
         } catch (NumberFormatException ex) {
             naechte = 1;
             naechteanzahltextField2.setText("1");
-
-
         }
 
-        naechte = Integer.parseInt(naechteanzahltextField2.getText());
-        double vorschauPreisProNacht = preisProNacht * naechte + fruestueck();
-        preisBerechnetJLabel.setText(String.valueOf(vorschauPreisProNacht) + " € " + String.valueOf(naechte) + "Nächte");
 
+        //hier wird Frühstück pro nacht bestimmt (je nach Zimmerart anderer Preis)
+        double fruehstueckProNacht = 0.0;
+        if (fruestueckjaRadioButton.isSelected()) {
+            if ("Einzelzimmer".equals(zimmerArt)){
+                fruehstueckProNacht = 12.0;
+            } else if ("Doppelzimmer".equals(zimmerArt)){
+                fruehstueckProNacht = 24.0;
+            } else if ("Familienzimmer".equals(zimmerArt)) {
+                fruehstueckProNacht = 40.0;
+            }
+        }
+
+        //hier berechnet man den Endpreis (Zimmerart + eingegebene Nächteanzahl + Frühstück)
+        double gesamtPreis = (preisProNacht + fruehstueckProNacht) * naechte;
+// hinzugefügt im Label zum ausgeben (also die Ausgabe)
+        preisBerechnetJLabel.setText(gesamtPreis + " € für " + naechte + "Nächte");
 
     }
 
-    // auch methode wenn man nächte auswähl, dass der preis immer erhöht wird
 
         //Einfügen von min. drei Objekten zur Array Liste:
         public void initObjekte () {
