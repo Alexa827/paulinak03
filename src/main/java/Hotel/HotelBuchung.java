@@ -90,8 +90,14 @@ public class HotelBuchung extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //Zahl von String zu int
                 int counter = Integer.parseInt(naechteanzahltextField2.getText());
-                //Zahl, soll eins nach oben zählen
-                counter++;
+
+                //Hier wird ein Hinweis angezeigt, wenn die max. Nächteanzahl überschritten wird
+                //hier bedeutet this = das JFrame, 1.Text = Nachricht und 2.Text ist das Fenstertitel
+                if (counter < 30) {
+                    counter ++;
+                } else {
+                    JOptionPane.showMessageDialog(HotelBuchung.this, "Es können maximal 30 Nächte gebucht werden!", "Hinweis", JOptionPane.INFORMATION_MESSAGE); //Das Information_Message ich der Ikon-Typ
+                }
                 //Zahl wieder von int zu String
                 naechteanzahltextField2.setText(String.valueOf(counter));
 
@@ -153,6 +159,13 @@ public class HotelBuchung extends JFrame {
         } catch (NumberFormatException ex) {
             naechte = 1;
             naechteanzahltextField2.setText("1");
+        }
+        //Begrenzung bei manueller Eingabe der Nächte,  //Hier wird ein Hinweis angezeigt, wenn die max. Nächteanzahl überschritten wird
+        if (naechte > 30){
+            naechte = 30;
+            naechteanzahltextField2.setText("30");
+
+            JOptionPane.showMessageDialog (this, "Es können maximal 30 Nächte gebucht werden!","Hinweis", JOptionPane.INFORMATION_MESSAGE);
         }
 
 
