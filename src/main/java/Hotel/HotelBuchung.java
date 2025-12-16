@@ -4,9 +4,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JScrollPane;
-import java.awt.Dimension;
-
 
 public class HotelBuchung extends JFrame {
 
@@ -29,7 +26,6 @@ public class HotelBuchung extends JFrame {
     private JLabel preisBerechnetJLabel;
     private JButton buchungenmitFruestueckbutton1;
     private JButton alleBuchungenanzeigenbutton1;
-    private JScrollPane scrollJScrollPane;
 
     private ArrayList<Zimmer> zimmerListe = new ArrayList<>();
 
@@ -41,9 +37,6 @@ public class HotelBuchung extends JFrame {
         setContentPane(mainJPanel);
         setVisible(true);
 
-        /*//mit scrollPane hoch und runter scrollen
-        JScrollPane scrollPen = new JScrollPane(listetextArea1);
-        addJScrollPanel.add(scrollPen);*/
 
         //füllt Liste, bevor Benutzer diese in GUI sieht, ohne sieht der Benutzer nichts
         initObjekte();
@@ -161,8 +154,14 @@ public class HotelBuchung extends JFrame {
                 //hier: wird Textarea aktualisiert, sodass Daten hinzugefügt werrden
                 updateTextArea(zimmerListe);
 
-                //ein Fenster, der aufploppt, um zu zeigen, dass die Buchung bestätigt wurde und gespeichert
+                //Eingabefelder wieder auf Anfang setzten
+                nametextField1.setText("");
+                naechteanzahltextField2.setText("1");
+                fruestueckjaRadioButton.setSelected(true);
+                zimmerAuswahlcomboBox1.setSelectedIndex(0);
+                preisBerechnetJLabel.setText("62.00 € für 1 Nacht");
 
+                //ein Fenster, der aufploppt, um zu zeigen, dass die Buchung bestätigt wurde und gespeichert
                 JOptionPane.showMessageDialog(HotelBuchung.this, "Buchung wurde erfolgreich gespeichert!", "Info", JOptionPane.INFORMATION_MESSAGE);
             }
 
@@ -246,7 +245,11 @@ public class HotelBuchung extends JFrame {
         //hier berechnet man den Endpreis (Zimmerart + eingegebene Nächteanzahl + Frühstück)
         double gesamtPreis = (preisProNacht + fruehstueckProNacht) * naechte;
 // hinzugefügt im Label zum ausgeben (also die Ausgabe)
-        preisBerechnetJLabel.setText(gesamtPreis + " € für " + naechte + "Nächte");
+        if(naechte == 1){
+            preisBerechnetJLabel.setText(gesamtPreis + " € für " + naechte + " Nacht");
+        }else{
+            preisBerechnetJLabel.setText(gesamtPreis + " € für " + naechte + " Nächte");
+        }
 
     }
 

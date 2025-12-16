@@ -20,7 +20,6 @@ public class Zimmer extends JFrame {
 
     }
 
-
     public double berechnePreis() {
         double gesamt = preisProNacht * naechteanzahl;
 // hier mit fruehstück direkt, somit wird der endgültige preis berechnet
@@ -47,11 +46,18 @@ public class Zimmer extends JFrame {
     //Ausgabe verschönern von Array Liste: (hier, weil HotelBuchung weiß nicht wie Objekte aussehen sollen, nur Klasse selbst)
     @Override
     public String toString() {
+        //Ausgabe von Frühstück statt true/false jetzt Ja/Nein
+        String fruestueckstext;
+        if(fruestueck == true){
+        fruestueckstext = "Ja";
+        }else {
+        fruestueckstext = "Nein";
+        }
         return "\nVor- und Nachname: " + name +
                 "\nZimmerart: " + zimmerArt +
                 "\nNächteanzahl: " + naechteanzahl +
-                "\nFrühstück: " + fruestueck +
-                "\nPreis Pro Nacht: " + preisProNacht;
+                "\nFrühstück: " + fruestueckstext +
+                "\nPreis Pro Nacht: " + preisProNacht + " €";
 
     }
 }
