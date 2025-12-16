@@ -70,16 +70,8 @@
         </constraints>
         <properties>
           <editable value="false"/>
-          <foreground color="-8007963"/>
+          <foreground color="-13675684"/>
           <lineWrap value="false"/>
-        </properties>
-      </component>
-      <component id="7358e" class="javax.swing.JLabel" binding="filterJLabel">
-        <constraints>
-          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Filter"/>
         </properties>
       </component>
       <component id="c616e" class="javax.swing.JLabel" binding="preisJLabel">

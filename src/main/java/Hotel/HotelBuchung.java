@@ -16,7 +16,6 @@ public class HotelBuchung extends JFrame {
     private JButton buchnungSpeichernButton;
     private JComboBox zimmerAuswahlcomboBox1;
     private JLabel preisJLabel;
-    private JLabel filterJLabel;
     private JLabel fruestueckJLabel;
     private JLabel naechteanzahlJLabel;
     private JLabel zimmerAuswahlJLabel;
