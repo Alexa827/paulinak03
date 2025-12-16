@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JScrollPane;
+import java.awt.Dimension;
 
 
 public class HotelBuchung extends JFrame {
@@ -25,6 +27,9 @@ public class HotelBuchung extends JFrame {
     private JButton minusAnzahlPersonenbutton1;
     private JButton plusAnzahlPersonenbutton2;
     private JLabel preisBerechnetJLabel;
+    private JButton buchungenmitFruestueckbutton1;
+    private JButton alleBuchungenanzeigenbutton1;
+    private JScrollPane scrollJScrollPane;
 
     private ArrayList<Zimmer> zimmerListe = new ArrayList<>();
 
@@ -36,7 +41,9 @@ public class HotelBuchung extends JFrame {
         setContentPane(mainJPanel);
         setVisible(true);
 
-        naechteanzahltextField2.setText("1");
+        /*//mit scrollPane hoch und runter scrollen
+        JScrollPane scrollPen = new JScrollPane(listetextArea1);
+        addJScrollPanel.add(scrollPen);*/
 
         //füllt Liste, bevor Benutzer diese in GUI sieht, ohne sieht der Benutzer nichts
         initObjekte();
@@ -52,6 +59,8 @@ public class HotelBuchung extends JFrame {
         fruestueck.add(fruestueckNeinRadioButton);
 
         fruestueckjaRadioButton.setSelected(true);
+
+
 
 //Gesamtpreis wird geändert bzw. aktualisiert, wenn bei Frühstücj ja oder nein ausgewählt wird
         fruestueckjaRadioButton.addActionListener(new ActionListener() {
@@ -155,9 +164,33 @@ public class HotelBuchung extends JFrame {
                 //ein Fenster, der aufploppt, um zu zeigen, dass die Buchung bestätigt wurde und gespeichert
 
                 JOptionPane.showMessageDialog(HotelBuchung.this, "Buchung wurde erfolgreich gespeichert!", "Info", JOptionPane.INFORMATION_MESSAGE);
-
             }
 
+        });
+
+//Aktion Listener Filter für Buchungen mit Frühstück
+        buchungenmitFruestueckbutton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Neue Liste nur mit Frühstück
+                ArrayList<Zimmer> buchungenMitFruehstueck = new ArrayList<>();
+                for (Zimmer zimmer : zimmerListe) {
+                    if (zimmer.hatFruestueck()) {
+                        buchungenMitFruehstueck.add(zimmer);
+                    }
+                }
+
+                // TextArea aktualisieren mit gefilterter Liste
+                updateTextArea(buchungenMitFruehstueck);
+            }
+        });
+
+//Alle Buchungen können durch Button wieder angezeigt werden
+        alleBuchungenanzeigenbutton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               updateTextArea(zimmerListe);
+            }
         });
     }
 
@@ -174,19 +207,6 @@ public class HotelBuchung extends JFrame {
         }
 
     }
-    /*private double fruehstueckProNacht(String zimmerArt) {
-        if (!fruestueckjaRadioButton.isSelected()) {
-            return 0.0;
-        }
-
-        if ("Einzelzimmer".equals(zimmerArt)) return 12.0;
-        if ("Doppelzimmer".equals(zimmerArt)) return 24.0;
-        if ("Familienzimmer".equals(zimmerArt)) return 40.0;
-
-        return 0.0;
-    }*/
-
-
 
     //hier Methode um Frhstück dazuzurechnen , wenn "ja" gewählt wird
     private void gesamtPreis() {
@@ -255,28 +275,12 @@ public class HotelBuchung extends JFrame {
             listetextArea1.setText(gesamtText);
         }
 
-
         public static void main (String[]args){
             new HotelBuchung();
         }
     }
 
-/*public double berechnePreis(int naechte, boolean fruehstueck) {
-    double gesamt = preisProNacht * naechte;
 
-    if (fruehstueck) {
-        gesamt += 10 * naechte;
-    }
-    return gesamt;
-}
-public String getZimmerArt() {
-    return zimmerArt;
-}
-public int getPersonenanzahl(){
-    return personenanzahl;
-}
-public double getPreisProNacht(){
-    return preisProNacht;*/
 
 
 

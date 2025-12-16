@@ -3,7 +3,7 @@ package Hotel;
 import javax.swing.*;
 import java.util.ArrayList;
 public class Zimmer extends JFrame {
-    //3 Attribute
+
     private String name;
     private String zimmerArt;
     private int naechteanzahl;
@@ -19,6 +19,7 @@ public class Zimmer extends JFrame {
         this.preisProNacht = preisProNacht;
 
     }
+
 
     public double berechnePreis() {
         double gesamt = preisProNacht * naechteanzahl;
@@ -37,6 +38,10 @@ public class Zimmer extends JFrame {
             gesamt += fruestueckPreis * naechteanzahl;
         }
         return gesamt;
+    }
+
+    public boolean hatFruestueck(){
+        return fruestueck;
     }
 
     //Ausgabe verschönern von Array Liste: (hier, weil HotelBuchung weiß nicht wie Objekte aussehen sollen, nur Klasse selbst)
