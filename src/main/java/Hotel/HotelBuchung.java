@@ -25,6 +25,8 @@ public class HotelBuchung extends JFrame {
     private JLabel preisBerechnetJLabel;
     private JButton buchungenmitFruestueckbutton1;
     private JButton alleBuchungenanzeigenbutton1;
+    private JLabel ueberschritJLabel;
+    private JLabel nameJLabel;
 
     private ArrayList<Zimmer> zimmerListe = new ArrayList<>();
 
@@ -32,7 +34,7 @@ public class HotelBuchung extends JFrame {
     public HotelBuchung() {
         setTitle("Hotelbuchung");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 700);
+        setSize(1000, 900);
         setContentPane(mainJPanel);
         setVisible(true);
 
