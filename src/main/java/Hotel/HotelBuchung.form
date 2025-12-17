@@ -219,7 +219,7 @@
           <component id="ac7a7" class="javax.swing.JTextArea" binding="listetextArea1">
             <constraints/>
             <properties>
-              <background color="-5649195"/>
+              <background color="-3674634"/>
               <editable value="false"/>
               <font name="Avenir Next" size="12"/>
               <foreground color="-13675684"/>
