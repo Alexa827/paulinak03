@@ -19,7 +19,7 @@
           <background color="-13947600"/>
           <enabled value="true"/>
           <font name="Avenir Next" size="16" style="0"/>
-          <foreground color="-1"/>
+          <foreground color="-16777216"/>
           <text value="Zimmerart"/>
         </properties>
       </component>
@@ -48,6 +48,7 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-1"/>
           <font name="Avenir Next" size="12"/>
           <text value="1"/>
         </properties>
@@ -76,6 +77,7 @@
           <grid row="8" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-3674634"/>
           <font name="Avenir Next" size="12"/>
           <text value="Buchnung speichern"/>
         </properties>
@@ -85,7 +87,10 @@
           <grid row="5" column="2" row-span="1" col-span="8" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1"/>
           <font name="Avenir Next" size="12"/>
+          <foreground color="-10855069"/>
+          <inheritsPopupMenu value="false"/>
         </properties>
       </component>
       <component id="6b51b" class="javax.swing.JLabel" binding="nameJLabel">
@@ -103,7 +108,16 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-1"/>
+          <caretColor color="-16777216"/>
+          <editable value="true"/>
+          <enabled value="true"/>
+          <focusCycleRoot value="false"/>
+          <focusable value="true"/>
+          <foreground color="-10855069"/>
+          <selectedTextColor color="-16777216"/>
+        </properties>
       </component>
       <vspacer id="9c2af">
         <constraints>
@@ -142,7 +156,7 @@
           <background color="-8679777"/>
           <enabled value="true"/>
           <font name="Avenir Next" size="12"/>
-          <foreground color="-2104859"/>
+          <foreground color="-16777216"/>
           <hideActionText value="false"/>
           <text value="Buchungen mit Frühstück "/>
         </properties>
@@ -184,6 +198,8 @@
           <grid row="6" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-3674634"/>
+          <foreground color="-10855069"/>
           <text value="+"/>
         </properties>
       </component>
@@ -192,6 +208,7 @@
           <grid row="6" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <foreground color="-10855069"/>
           <text value="-"/>
         </properties>
       </component>
