@@ -47,7 +47,7 @@ public class HotelBuchung extends JFrame {
         zimmerAuswahlcomboBox1.addItem("Doppelzimmer");
         zimmerAuswahlcomboBox1.addItem("Familienzimmer");
 
-        //Früstück standartmäßig auf Ja stellen, falls nichts anderes ausgewählt wird
+        //Frühstück standartmäßig auf Ja stellen, falls nichts anderes ausgewählt wird
         ButtonGroup fruestueck = new ButtonGroup();
         fruestueck.add(fruestueckjaRadioButton);
         fruestueck.add(fruestueckNeinRadioButton);
@@ -232,14 +232,14 @@ public class HotelBuchung extends JFrame {
 
 
         //hier wird Frühstück pro nacht bestimmt (je nach Zimmerart anderer Preis)
-        double fruehstueckProNacht = 0.0;
+        double fruehstueckProNacht = 0.00;
         if (fruestueckjaRadioButton.isSelected()) {
             if ("Einzelzimmer".equals(zimmerArt)){
-                fruehstueckProNacht = 12.0;
+                fruehstueckProNacht = 12.00;
             } else if ("Doppelzimmer".equals(zimmerArt)){
-                fruehstueckProNacht = 24.0;
+                fruehstueckProNacht = 24.00;
             } else if ("Familienzimmer".equals(zimmerArt)) {
-                fruehstueckProNacht = 40.0;
+                fruehstueckProNacht = 40.00;
             }
         }
 
