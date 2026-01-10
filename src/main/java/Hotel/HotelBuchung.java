@@ -39,10 +39,10 @@ public class HotelBuchung extends JFrame {
         setVisible(true);
 
 
-        //füllt Liste, bevor Benutzer diese in GUI sieht, ohne sieht der Benutzer nichts
+        // Füllt die Liste, damit der Benutzer etwas in der GUI sieht
         initObjekte();
 
-        //ComboBox befüllen mit einfachen Strings:
+        //ComboBox befüllen:
         zimmerAuswahlcomboBox1.addItem("Einzelzimmer");
         zimmerAuswahlcomboBox1.addItem("Doppelzimmer");
         zimmerAuswahlcomboBox1.addItem("Familienzimmer");
@@ -56,7 +56,7 @@ public class HotelBuchung extends JFrame {
 
 
 
-//Gesamtpreis wird geändert bzw. aktualisiert, wenn bei Frühstücj ja oder nein ausgewählt wird
+//Gesamtpreis wird geändert bzw. aktualisiert, wenn bei Frühstück ja oder nein ausgewählt wird
         fruestueckjaRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,7 +87,8 @@ public class HotelBuchung extends JFrame {
                 gesamtPreis();
             }
         });
-//Counter Plus
+
+        //Counter für die Anzahl an Nächte (Plus)
         plusAnzahlPersonenbutton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -105,7 +106,7 @@ public class HotelBuchung extends JFrame {
                 //Zahl wieder von int zu String
                 naechteanzahltextField2.setText(String.valueOf(counter));
 
-                gesamtPreis(); //dadurch wird die Berechnung neu gemacht bei Änferungen
+                gesamtPreis(); // Aktualisiert die Berechnung bei Änderungen
             }
         });
 
@@ -245,7 +246,8 @@ public class HotelBuchung extends JFrame {
 
         //hier berechnet man den Endpreis (Zimmerart + eingegebene Nächteanzahl + Frühstück)
         double gesamtPreis = (preisProNacht + fruehstueckProNacht) * naechte;
-// hinzugefügt im Label zum ausgeben (also die Ausgabe)
+
+         // hinzugefügt im Label zum ausgeben (also die Ausgabe)
         if(naechte == 1){
             preisBerechnetJLabel.setText(gesamtPreis + " € für " + naechte + " Nacht");
         }else{
@@ -257,10 +259,15 @@ public class HotelBuchung extends JFrame {
 
         //Einfügen von min. drei Objekten zur Array Liste:
         public void initObjekte () {
-            zimmerListe.add(new Zimmer("Thomas Müller", "Einzelzimmer", 1,true, 50.00));
-            zimmerListe.add(new Zimmer("Thomas Gottschalk", "Doppelzimmer", 2, true, 120.00));
-            zimmerListe.add(new Zimmer("Heidi Klum", "Familienzimmer", 10, false, 20.00));
-            zimmerListe.add(new Zimmer("Felix Lobrecht", "Doppelzimmer", 2, true, 150.00));
+            Zimmer z1 = new Zimmer ("Thomas Müller", "Einzelzimmer", 1,true, 50.00);
+            Zimmer z2 = new Zimmer ("Thomas Gottschalk", "Doppelzimmer", 2, true, 120.00);
+            Zimmer z3 = new Zimmer ("Heidi Klum", "Familienzimmer", 10, false, 20.00);
+            Zimmer z4 = new Zimmer ("Felix Lobrecht", "Doppelzimmer", 2, true, 150.00);
+
+            zimmerListe.add(z1);
+            zimmerListe.add(z2);
+            zimmerListe.add(z3);
+            zimmerListe.add(z4);
 
             updateTextArea(zimmerListe);
         }
@@ -269,11 +276,11 @@ public class HotelBuchung extends JFrame {
         private void updateTextArea(ArrayList<Zimmer> liste) {
             String gesamtText = "";
 
-            //Einfügen der bisherigen Liste in das Ausgabefelt
+            //Schleife über Liste mit Objektzugriff
             for (Zimmer zimmer : liste) {
-                String einZimmerText = zimmer.toString();
-                gesamtText += einZimmerText;
-                gesamtText += "\n=================";
+                String einZimmerText = zimmer.toString(); //wird in Zimmerklasse aufgerufen
+                gesamtText = gesamtText + einZimmerText;
+                gesamtText = gesamtText + "\n=================";
             }
 
             listetextArea1.setText(gesamtText);

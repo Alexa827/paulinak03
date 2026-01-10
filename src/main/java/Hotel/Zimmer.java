@@ -10,19 +10,19 @@ public class Zimmer extends JFrame {
     private boolean fruestueck;
     private double preisProNacht;
 
-
+//Konstruktor
     public Zimmer(String name, String zimmerArt, int naechteanzahl, boolean fruestueck, double preisProNacht) {
         this.name = name;
         this.zimmerArt = zimmerArt;
         this.naechteanzahl = naechteanzahl;
         this.fruestueck = fruestueck;
         this.preisProNacht = preisProNacht;
-
     }
 
     public double berechnePreis() {
         double gesamt = preisProNacht * naechteanzahl;
-// hier mit fruehstück direkt, somit wird der endgültige preis berechnet
+
+// hier mit Fruehstück direkt, somit wird der endgültige Preis berechnet
         if (fruestueck) {
             double fruestueckPreis = 0;
 
@@ -43,7 +43,7 @@ public class Zimmer extends JFrame {
         return fruestueck;
     }
 
-    //Ausgabe verschönern von Array Liste: (hier, weil HotelBuchung weiß nicht wie Objekte aussehen sollen, nur Klasse selbst)
+    // Formatiert die Ausgabe der ArrayList hier, da HotelBuchung nur die Klasse kennt
     @Override
     public String toString() {
         //Ausgabe von Frühstück statt true/false jetzt Ja/Nein
