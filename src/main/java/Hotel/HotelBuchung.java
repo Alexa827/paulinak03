@@ -129,6 +129,7 @@ public class HotelBuchung extends JFrame {
                 String name = nametextField1.getText().trim();
                 if (name.isEmpty()) {
                     JOptionPane.showMessageDialog(HotelBuchung.this, "Bitte einen Namen eingeben!", "Hinweis", JOptionPane.INFORMATION_MESSAGE);
+                    return;
                 }
 
                 String zimmerArt = (String) zimmerAuswahlcomboBox1.getSelectedItem();
